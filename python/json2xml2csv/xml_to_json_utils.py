@@ -8,7 +8,7 @@ def children_to_dict(xml_element):
     child_dict = element_to_dict(child_element)
     new_value = child_dict[child_element.tag]
 
-    if children_dict.has_key(child_element.tag):
+    if child_element.tag in children_dict:
       existing_value = children_dict[child_element.tag]
 
       if type(existing_value) is ListType:

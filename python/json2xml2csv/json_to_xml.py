@@ -1,7 +1,7 @@
 from lxml import etree
 from types import ListType
-from json_to_xml_utils import *
-from args import json_to_xml_parse_args
+from .json_to_xml_utils import *
+from .args import json_to_xml_parse_args
 
 def json_to_xml(json):
   """
@@ -9,7 +9,7 @@ def json_to_xml(json):
   :type json: python dictionary
   """
   xml_pretty_string = ''
-  for key, value in json.items():
+  for key, value in list(json.items()):
     if type(value) is ListType:
       element_list = json_array_to_xml(key, value)
     else:
@@ -32,12 +32,12 @@ def main():
   with open(args.source_json_file) as json_data_file:
 
     # Load the JSON
-    print("Loading JSON file..."),
+    print(("Loading JSON file..."), end=' ')
     sys.stdout.flush()
     json_data = json.load(json_data_file)
     print("\rLoading JSON file...[Completed]")
 
-    print("Converting to XML..."),
+    print(("Converting to XML..."), end=' ')
     sys.stdout.flush()
 
     # Process the JSON
@@ -45,7 +45,7 @@ def main():
 
     print("\rConverting to XML...[Completed]")
 
-    print("Writing to file..."),
+    print(("Writing to file..."), end=' ')
     sys.stdout.flush()
 
     # Determine the output file name
@@ -64,7 +64,7 @@ def main():
     # Calculate the processing time
     end_time = time.time()
     processing_time = end_time - start_time
-    print("COMPLETED: JSON -> XML in %.5f seconds" % processing_time)
+    print(("COMPLETED: JSON -> XML in %.5f seconds" % processing_time))
 
 
 if __name__ == "__main__":

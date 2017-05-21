@@ -48,7 +48,7 @@ def key_value_to_xml(key, value):
     parent = etree.Element(key)
 
     # Process all the key-value pairs in the current value
-    for child_key, child_value in value.items():
+    for child_key, child_value in list(value.items()):
 
       # Recursively process value by applying responding functions
       if type(child_value) is ListType:

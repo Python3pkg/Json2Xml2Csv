@@ -2,8 +2,8 @@ import sys
 import time
 import json
 from lxml import etree
-from xml_to_json_utils import *
-from args import xml_to_json_parse_args
+from .xml_to_json_utils import *
+from .args import xml_to_json_parse_args
 
 
 def xml_to_json(xml_element):
@@ -24,13 +24,13 @@ def main():
   args = xml_to_json_parse_args()
 
   # Load the JSON
-  print("Loading XML file..."),
+  print(("Loading XML file..."), end=' ')
   sys.stdout.flush()
   xml_data = etree.parse(args.source_xml_file)
   root = xml_data.getroot()
   print("\rLoading XML file...[Completed]")
 
-  print("Converting to JSON..."),
+  print(("Converting to JSON..."), end=' ')
   sys.stdout.flush()
 
   # Process the JSON
@@ -38,7 +38,7 @@ def main():
 
   print("\rConverting to JSON...[Completed]")
 
-  print("Writing to file..."),
+  print(("Writing to file..."), end=' ')
   sys.stdout.flush()
 
   # Determine the output file name
@@ -57,7 +57,7 @@ def main():
   # Calculate the processing time
   end_time = time.time()
   processing_time = end_time - start_time
-  print("COMPLETED: XML -> JSON in %.5f seconds" % processing_time)
+  print(("COMPLETED: XML -> JSON in %.5f seconds" % processing_time))
 
 
 if __name__ == "__main__":
